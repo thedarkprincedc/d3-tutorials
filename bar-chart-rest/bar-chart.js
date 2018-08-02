@@ -11,14 +11,14 @@
             .append("div")
             .attr("class", "chart")
             .selectAll("div")
-            .data(data)
-            .enter()
-            .append("div")
-            .style("width", (d) => { return d + "px"; })
-            .text((d) => { return d; });
+                .data(data)
+                .enter()
+                .append("div")
+                .style("width", (d) => { return d + "px"; })
+                .text((d) => { return d; });
     }
     /////////////////////////
-    d3.json("./test.json").then((data) => {
+    d3.json("../_data/test.json").then((data) => {
         data.forEach((value, index) => {
             displayText(value);
             displayChart(value.data);
