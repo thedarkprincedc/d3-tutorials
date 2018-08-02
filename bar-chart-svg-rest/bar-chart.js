@@ -11,7 +11,8 @@
         var padding = 14;
         var svg = d3.select("body")
                     .append("svg")
-                    .style("width", "100%");
+                    .style("width", width)
+                    .style("height", data.length * 16);
         svg.selectAll("rect")
                 .data(data)
                 .enter()
@@ -33,8 +34,9 @@
                 .style("text-anchor", "start")
                 .style("fill", "red")
                 .style("font-size", "16px")
-                .attr("x", (d,i) => { 
-                    return (d > 0) ? d - 16 : 0 + "px"; 
+                .attr("x", (d,i,e) => { 
+                    var calcWidth = e[i].getComputedTextLength();
+                    return (d > 0) ? (data[i] - calcWidth - 2) : 0;
                 })
                 .attr("y", (d,i) => { return ( (i*16) + padding) +"px";  })
     }
