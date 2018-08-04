@@ -3,7 +3,7 @@
         "name" : "Test 1",
         "data" : [
             {   
-                "month": 0,
+                "month": 1,
                 "hits": 100
             }, {
                 "month": 1,
@@ -42,6 +42,10 @@
         "data" : [
             {
                 "month": 0,
+                "hits": 0
+            },
+            {
+                "month": 12,
                 "hits": 0
             }
         ]
