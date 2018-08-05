@@ -2,24 +2,21 @@
     {
         "name" : "Test 1",
         "data" : [
-            {   
-                "month": 0,
-                "hits": 100
-            }, {
-                "month": 1,
+             {
+                "month": "20180101",
                 "hits": 20
             },{
-                "month": 2,
+                "month": "20180201",
                 "hits": 44
             },{
-                "month": 3,
+                "month": "20180301",
                 "hits": 50
             },{
-                "month": 4,
+                "month": "20180401",
                 "hits": 50
             },
             {
-                "month": 5,
+                "month": "20180501",
                 "hits": 50
             }
         ]

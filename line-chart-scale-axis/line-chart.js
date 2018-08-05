@@ -12,14 +12,15 @@
         var year = strDate.substr(0,4);
         var month = strDate.substr(4,2)-1;
         var day = strDate.substr(6,2);
+     
         return new Date(year, month, day)
     }
 
     function displayChart(value) {
         var minDate = getDate(value.data[0]["month"]);
         var maxDate = getDate(value.data[value.data.length-1]["month"]);
-        console.log("Min Date", minDate)
-        console.log("Max Date", maxDate)
+        console.log("Min Date: %s\nMax Date %s", minDate, maxDate)
+ 
         let xScale = d3.scaleTime()
             .domain([ 
                 minDate,
@@ -29,11 +30,14 @@
         let yScale = d3.scaleLinear()
             .domain([0, d3.max(value.data, (v) => { return v.hits; })])
             .range([height-padding, 10]);
-        let xAxisGen = d3.axisBottom(xScale);
+            
+        let xAxisGen = d3.axisBottom(xScale)
+            .tickValues(value.data.map(function(d){ return getDate(d.month);}))
+            .tickFormat(d3.timeFormat("%b"));
         let yAxisGen = d3.axisLeft(yScale).ticks(4);
 
         let linefunc = d3.line()
-            .x((d) => { return xScale(d.month); })
+            .x((d) => { return xScale(getDate(d.month)); })
             .y((d) => { return yScale(d.hits); })
             .curve(d3.curveLinear);
 
@@ -56,7 +60,7 @@
             .attr("fill", "none")
             
     }
-    d3.json("../_data/test.1.json").then((data) => {
+    d3.json("../_data/test.2.json").then((data) => {
         data.forEach((value, index) => {
             displayText(value);
             displayChart(value);
